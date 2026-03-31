@@ -1,0 +1,27 @@
+﻿# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Environment
+.env
+*.env
+.venv/
+venv/
+env/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Large/generated artifacts
+vector_db/chroma_db/
+*.sqlite3
+logs/
+
+# Large notebook outputs
+notebooks/**/*_checkpoint*.ipynb
