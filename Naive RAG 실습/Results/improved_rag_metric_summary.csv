@@ -1,0 +1,4 @@
+﻿metric,score
+context_recall,0.8288
+faithfulness,0.7077
+factual_correctness(mode=f1),0.4081
