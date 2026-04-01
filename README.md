@@ -10,8 +10,8 @@
 
 최종 산출물은 단일 노트북(`Improved_RAG_Copyright_CaseLaw.ipynb`)에서 확인 가능합니다.
 
-
 ## 핵심 흐름
+
 1. 환경 및 라이브러리 구성
 2. 데이터 로드(`data/raw/`)
 3. 임베딩용 문서 전처리 및 청크 분할
@@ -34,12 +34,11 @@
 │  ├─ improved_rag_report.pdf
 │  └─ improved_rag_summary_report.docx
 ├─ notebooks/
-│  ├─ deprecated/
-│  │  ├─ naive_rag_practice.ipynb
-│  │  ├─ naive_rag_chaehyunju.ipynb
-│  │  └─ naive_rag_comparison_chaehyunju.ipynb
-│  └─ archive/
-│     └─ improved_rag_copyright_caselaw.ipynb
+│  └─ deprecated/
+│     ├─ naive_rag_practice.ipynb
+│     ├─ naive_rag_chaehyunju.ipynb
+│     └─ naive_rag_comparison_chaehyunju.ipynb
+│
 ├─ results/
 │  ├─ improved_rag_metric_summary.csv
 │  └─ improved_rag_full_results.csv
@@ -61,6 +60,7 @@
   - 샘플/디버깅에 사용한 보조 데이터(실행 환경 점검용)
 
 ### 참고: 공개용 주의사항
+
 - 공개 저장소에 업로드 시 원 데이터 접근 권한이 필요한 파일이 있거나 개인정보가 있는지 별도 확인 필요
 - 대용량 벡터 인덱스는 `.gitignore`로 제외되어 있어 재생성이 필요
 
@@ -83,6 +83,7 @@ pip install langchain langchain-community langchain-openai langchain-chroma rank
 노트북 상단에서 API 키 입력을 요구하면 직접 입력하는 방식으로 처리했습니다.
 
 필요 라이브러리:
+
 - `pandas`, `openpyxl`
 - `langchain`, `langchain-community`, `langchain-openai`, `langchain-chroma`
 - `rank_bm25`
@@ -92,6 +93,7 @@ pip install langchain langchain-community langchain-openai langchain-chroma rank
 ### 3) 경로 체크 (노트북 내부 변수)
 
 노트북은 실행 환경에 맞게 아래 경로가 로컬 기준으로 동작하도록 정리되어 있습니다.
+
 - `CASE_DATA_PATH`: `data/raw/Copyright_case_law_Supreme.xlsx`
 - `QA_DATA_PATH`: `data/raw/Copyright_QA_GroundTrue.xlsx`
 - `CHROMA_DIR`: `vector_db/chroma_db`
@@ -100,6 +102,7 @@ pip install langchain langchain-community langchain-openai langchain-chroma rank
 ### 4) 실행 순서
 
 노트북의 셀을 위에서 아래로 순차 실행합니다.
+
 - 1단계: 데이터 로딩 및 전처리
 - 2단계: 문서 분할 및 인덱싱
 - 3단계: Chroma/BM25 검색기 생성
@@ -116,12 +119,13 @@ pip install langchain langchain-community langchain-openai langchain-chroma rank
 ## 비교 실험 및 보관본
 
 본 저장소는 최종 산출물 외에 실험 단계 파일을 구분해 보관합니다.
+
 - 실습/초기 실험: `notebooks/deprecated/`
-- 과거 개선본(보존): `notebooks/archive/improved_rag_copyright_caselaw.ipynb`
 
 ## 성능 개선 포인트
 
 현재 실험 파이프라인은 Naive RAG의 단점을 보완하기 위해 다음을 적용했습니다.
+
 - 문서 분할 전략 최적화로 문맥 단절 완화
 - Chroma(Dense) + BM25의 하이브리드 검색으로 recall 기반 후보 수 증가
 - 2단계 reranking으로 사실성/근거 일치도 향상
